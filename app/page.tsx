@@ -79,7 +79,7 @@ export default function Home() {
           </span>
         </a>
 
-        <nav style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
+        <nav className="dj-nav-links">
           {[
             { label: 'About',    href: '#about' },
             { label: 'Services', href: '#services' },
@@ -93,7 +93,7 @@ export default function Home() {
               {link.label}
             </a>
           ))}
-          <a href="tel:4344009422" style={{
+          <a href="tel:4344009422" className="dj-book-btn" style={{
             fontFamily: sans, fontSize: 10, fontWeight: 600,
             letterSpacing: 2, textTransform: 'uppercase',
             color: C.black, textDecoration: 'none',
@@ -106,12 +106,11 @@ export default function Home() {
       </header>
 
       {/* ── HERO ── */}
-      <section style={{
+      <section className="dj-hero" style={{
         minHeight: '100vh',
         display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
         textAlign: 'center',
-        padding: '140px 48px 100px',
         position: 'relative',
         overflow: 'hidden',
       }}>
@@ -155,7 +154,7 @@ export default function Home() {
             Cinematic photography and documentary film — capturing the moments that deserve to last.
           </p>
 
-          <div style={{ display: 'flex', gap: 20, alignItems: 'center', justifyContent: 'center' }}>
+          <div className="dj-cta-row">
             <a href="tel:4344009422" style={{
               fontFamily: sans, fontSize: 10, fontWeight: 600,
               letterSpacing: 3, textTransform: 'uppercase',
@@ -183,12 +182,7 @@ export default function Home() {
       </section>
 
       {/* ── ABOUT ── */}
-      <section id="about" style={{
-        padding: '120px 80px',
-        display: 'grid', gridTemplateColumns: '1fr 1fr',
-        gap: 80, alignItems: 'center',
-        background: C.offwhite,
-      }}>
+      <section id="about" className="dj-section dj-grid-2" style={{ background: C.offwhite }}>
         <div>
           <Label>The Story</Label>
           <p style={{
@@ -223,7 +217,7 @@ export default function Home() {
       </section>
 
       {/* ── SERVICES ── */}
-      <section id="services" style={{ padding: '120px 80px', background: C.white }}>
+      <section id="services" className="dj-section" style={{ background: C.white }}>
         <div style={{ marginBottom: 64 }}>
           <Label>What We Do</Label>
           <h2 style={{
@@ -235,7 +229,7 @@ export default function Home() {
           </h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 2 }}>
+        <div className="dj-grid-4">
           {services.map(svc => (
             <div key={svc.title} style={{
               background: C.offwhite,
@@ -257,7 +251,7 @@ export default function Home() {
       </section>
 
       {/* ── WORK / GALLERY ── */}
-      <section id="work" style={{ padding: '120px 80px', background: C.offwhite }}>
+      <section id="work" className="dj-section" style={{ background: C.offwhite }}>
         <div style={{ marginBottom: 64 }}>
           <Label>The Work</Label>
           <h2 style={{
@@ -269,7 +263,7 @@ export default function Home() {
           </h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 3 }}>
+        <div className="dj-grid-3">
           {gallery.map(photo => (
             <div key={photo.id} style={{ position: 'relative', aspectRatio: '3/2', overflow: 'hidden' }}>
               <Image
@@ -284,8 +278,8 @@ export default function Home() {
       </section>
 
       {/* ── LOCATIONS ── */}
-      <section style={{ padding: '120px 80px', background: C.white }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'start' }}>
+      <section className="dj-section" style={{ background: C.white }}>
+        <div className="dj-grid-2-top">
           <div>
             <Label>Where We Shoot</Label>
             <h2 style={{
@@ -324,8 +318,7 @@ export default function Home() {
       </section>
 
       {/* ── CONTACT ── */}
-      <section id="contact" style={{
-        padding: '140px 80px',
+      <section id="contact" className="dj-section" style={{
         background: C.black,
         textAlign: 'center',
       }}>
@@ -366,11 +359,9 @@ export default function Home() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer style={{
-        padding: '36px 80px',
+      <footer className="dj-footer" style={{
         background: C.white,
         borderTop: `1px solid ${C.border}`,
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
           <Image src="/logo.png" alt="Digital Jenius" width={28} height={28} style={{ objectFit: 'contain' }} />
