@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Jenius — Brand Identity Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:    #0D0D0D;
+      --cream:    #F5F3EE;
+      --gold:     #C9A96E;
+      --charcoal: #3A3835;
+      --stone:    #7A7672;
+      --mid:      #181613;
+      --serif: 'Instrument Serif', Georgia, serif;
+      --sans:  'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Side Navigation ── */
+    .sidenav {
+      position: fixed;
+      left: 28px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .sidenav a {
+      display: block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--charcoal);
+      transition: all 0.35s ease;
+      text-decoration: none;
+      position: relative;
+    }
+
+    .sidenav a::after {
+      content: attr(title);
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--sans);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--stone);
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .sidenav a:hover::after { opacity: 1; }
+    .sidenav a:hover        { background: var(--stone); }
+    .sidenav a.active       { background: var(--gold); transform: scale(1.6); }
+
+    /* ── Slides ── */
+    .slide {
+      min-height: 100vh;
+      padding: 80px 100px 80px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .slide--dark { background: var(--black); }
+    .slide--mid  { background: var(--mid); }
+
+    /* Section label */
+    .label {
+      font-family: var(--sans);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 44px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .label::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 48px;
+      background: var(--gold);
+      opacity: 0.4;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4.5vw, 64px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.15;
+    }
+
+    /* ──────────────────────────────────────── */
+    /* 1. COVER                                 */
+    /* ──────────────────────────────────────── */
+    #cover {
+      align-items: center;
+      text-align: center;
+    }
+
+    .cover-eyebrow {
+      font-family: var(--sans);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 56px;
+    }
+
+    .wordmark {
+      font-family: var(--serif);
+      font-size: clamp(44px, 7vw, 88px);
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      color: var(--cream);
+      line-height: 1;
+    }
+
+    .cover-rule {
+      width: 1px;
+      height: 72px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      margin: 36px auto;
+    }
+
+    .tagline-main {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(18px, 2.2vw, 26px);
+      font-weight: 300;
+      color: var(--stone);
+      letter-spacing: 0.04em;
+    }
+
+    .deck-meta {
+      position: absolute;
+      bottom: 36px;
+      right: 100px;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(122, 118, 114, 0.5);
+    }
+
+    /* ──────────────────────────────────────── */
+    /* 2. STORY                                 */
+    /* ──────────────────────────────────────── */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .pull-quote {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(26px, 3.5vw, 48px);
+      font-weight: 300;
+      line-height: 1.35;
+      color: var(--cream);
+    }
+
+    .pull-quote em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .story-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin-top: 40px;
+      opacity: 0.45;
+    }
+
+    .story-body p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--stone);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .story-body .hero-line {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 19px;
+      line-height: 1.7;
+      color: var(--cream);
+    }
+
+    /* ──────────────────────────────────────── */
+    /* 3. BRAND ESSENCE                         */
+    /* ──────────────────────────────────────── */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 52px;
+    }
+
+    .pillar {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(201, 169, 110, 0.12);
+      padding: 52px 40px 48px;
+      transition: border-color 0.3s;
+    }
+
+    .pillar:hover { border-color: rgba(201, 169, 110, 0.35); }
+
+    .pillar-num {
+      font-family: var(--serif);
+      font-size: 72px;
+      font-weight: 300;
+      color: rgba(201, 169, 110, 0.12);
+      line-height: 1;
+      margin-bottom: 28px;
+    }
+
+    .pillar-name {
+      font-family: var(--sans);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+
+    .pillar-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--stone);
+      line-height: 1.8;
+    }
+
+    /* ──────────────────────────────────────── */
+    /* 4. COLOR SYSTEM                          */
+    /* ──────────────────────────────────────── */
+    .color-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: 3px;
+      margin-top: 52px;
+    }
+
+    .swatch {
+      min-height: 240px;
+      padding: 36px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .swatch-name {
+      font-family: var(--sans);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .swatch-hex {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 300;
+      margin-bottom: 6px;
+      opacity: 0.65;
+    }
+
+    .swatch-use {
+      font-size: 11px;
+      font-weight: 300;
+      opacity: 0.5;
+      line-height: 1.55;
+    }
+
+    /* ──────────────────────────────────────── */
+    /* 5. TYPOGRAPHY                            */
+    /* ──────────────────────────────────────── */
+    .type-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      margin-top: 52px;
+    }
+
+    .type-block {
+      border-top: 1px solid rgba(201, 169, 110, 0.18);
+      padding-top: 32px;
+    }
+
+    .type-label {
+      font-family: var(--sans);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+    }
+
+    .type-hero {
+      font-size: 104px;
+      line-height: 0.88;
+      margin-bottom: 32px;
+    }
+
+    .type-scale { display: flex; flex-direction: column; gap: 0; }
+
+    .scale-row {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 16px;
+      align-items: baseline;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      padding: 14px 0;
+    }
+
+    .scale-meta {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: rgba(122,118,114,0.5);
+      text-transform: uppercase;
+    }
+
+    /* ──────────────────────────────────────── */
+    /* 6. LOGO                                  */
+    /* ──────────────────────────────────────── */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3px;
+      margin-top: 52px;
+    }
+
+    .logo-card {
+      padding: 64px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      min-height: 280px;
+    }
+
+    .logo-card--on-black  { background: var(--black); border: 1px solid rgba(255,255,255,0.05); }
+    .logo-card--on-mid    { background: #252220; }
+    .logo-card--on-cream  { background: var(--cream); }
+
+    .logo-caption {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    /* ──────────────────────────────────────── */
+    /* 7. VOICE                                 */
+    /* ──────────────────────────────────────── */
+    .voice-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      margin-top: 52px;
+    }
+
+    .tone-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .pill {
+      border: 1px solid rgba(201, 169, 110, 0.3);
+      color: var(--gold);
+      padding: 8px 22px;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .do-dont {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .do-col { background: rgba(201, 169, 110, 0.05); padding: 28px 22px; }
+    .dont-col { background: rgba(255,255,255,0.02); padding: 28px 22px; }
+
+    .col-head {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .do-col .col-head { color: var(--gold); }
+    .dont-col .col-head { color: var(--stone); }
+
+    .col-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .col-list li {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--stone);
+      line-height: 1.5;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .do-col .col-list li::before  { content: '→'; position: absolute; left: 0; color: var(--gold); }
+    .dont-col .col-list li::before { content: '×'; position: absolute; left: 0; color: rgba(255,255,255,0.15); }
+
+    .about-box {
+      border-top: 1px solid rgba(201, 169, 110, 0.18);
+      padding-top: 32px;
+      margin-bottom: 36px;
+    }
+
+    .about-text {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--stone);
+    }
+
+    .about-text span { color: var(--cream); }
+
+    .tagline-alts { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 28px; }
+
+    .tag-alt-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .tag-alt {
+      font-family: var(--serif);
+      font-weight: 300;
+      color: var(--stone);
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .tag-alt.primary { font-size: 22px; color: var(--cream); }
+    .tag-alt.secondary { font-size: 17px; font-style: italic; }
+
+    /* ──────────────────────────────────────── */
+    /* 8. SERVICES                              */
+    /* ──────────────────────────────────────── */
+    .svc-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-top: 52px;
+    }
+
+    .svc-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(201, 169, 110, 0.08);
+      padding: 36px 28px;
+      transition: all 0.3s ease;
+    }
+
+    .svc-card:hover {
+      background: rgba(201, 169, 110, 0.04);
+      border-color: rgba(201, 169, 110, 0.25);
+    }
+
+    .svc-icon { font-size: 26px; margin-bottom: 20px; display: block; }
+
+    .svc-title {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .svc-desc {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--stone);
+      line-height: 1.7;
+    }
+
+    /* ──────────────────────────────────────── */
+    /* 9. APPLICATIONS                          */
+    /* ──────────────────────────────────────── */
+    .apps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 52px;
+      margin-top: 52px;
+      align-items: start;
+    }
+
+    .app-label {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 24px;
+    }
+
+    /* Business card */
+    .biz-card {
+      background: var(--black);
+      border: 1px solid #222;
+      padding: 44px 48px;
+      aspect-ratio: 1.75;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,169,110,0.08);
+      max-width: 460px;
+    }
+
+    .bc-brand {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      color: var(--cream);
+    }
+
+    .bc-rule {
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      margin: 14px 0;
+    }
+
+    .bc-name {
+      font-family: var(--sans);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .bc-info {
+      font-size: 10px;
+      font-weight: 300;
+      color: var(--stone);
+      line-height: 2;
+      letter-spacing: 0.3px;
+    }
+
+    /* Social preview */
+    .social-mock {
+      background: #111;
+      border: 1px solid rgba(255,255,255,0.06);
+      overflow: hidden;
+      max-width: 420px;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+    }
+
+    .social-top {
+      padding: 22px 20px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .social-avatar {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      background: var(--charcoal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .avatar-text {
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 300;
+      color: var(--gold);
+    }
+
+    .social-handle {
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 4px;
+    }
+
+    .social-bio {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--stone);
+      line-height: 1.6;
+    }
+
+    .social-tiles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .tile {
+      aspect-ratio: 1;
+      background: #1a1a18;
+    }
+
+    .tile:nth-child(2)  { background: #161614; }
+    .tile:nth-child(3)  { background: #1e1c1a; }
+    .tile:nth-child(4)  { background: #191816; }
+    .tile:nth-child(5)  { background: #151412; }
+    .tile:nth-child(6)  { background: #1c1a18; }
+
+    /* ──────────────────────────────────────── */
+    /* 10. NEXT STEPS                           */
+    /* ──────────────────────────────────────── */
+    .next-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 52px;
+    }
+
+    .step-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .step-num {
+      font-family: var(--serif);
+      font-size: 32px;
+      font-weight: 300;
+      color: rgba(201, 169, 110, 0.2);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 36px;
+      margin-top: 2px;
+    }
+
+    .step-body strong {
+      display: block;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--cream);
+      letter-spacing: 0.5px;
+      margin-bottom: 5px;
+    }
+
+    .step-body p {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--stone);
+      line-height: 1.6;
+    }
+
+    /* ── Utilities ── */
+    .serif  { font-family: var(--serif); }
+    .gold   { color: var(--gold); }
+    .stone  { color: var(--stone); }
+  </style>
+</head>
+<body>
+
+  <!-- ── Side Navigation ── -->
+  <nav class="sidenav" id="sidenav">
+    <a href="#cover"    title="Cover"></a>
+    <a href="#story"    title="The Story"></a>
+    <a href="#essence"  title="Essence"></a>
+    <a href="#colors"   title="Colors"></a>
+    <a href="#type"     title="Typography"></a>
+    <a href="#logo"     title="Logo"></a>
+    <a href="#voice"    title="Voice"></a>
+    <a href="#services" title="Services"></a>
+    <a href="#apps"     title="Applications"></a>
+    <a href="#next"     title="Next Steps"></a>
+  </nav>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 1. COVER                                  -->
+  <!-- ══════════════════════════════════════════ -->
+  <section id="cover" class="slide slide--dark" style="align-items:center; text-align:center;">
+    <div class="cover-eyebrow">Brand Identity System &nbsp;·&nbsp; 2026</div>
+
+    <h1 class="wordmark">DIGITAL JENIUS</h1>
+    <div class="cover-rule"></div>
+    <p class="tagline-main">Every frame, on purpose.</p>
+
+    <div class="deck-meta">Dennis James Eddy &nbsp;·&nbsp; Charlottesville, Virginia</div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 2. THE STORY                               -->
+  <!-- ══════════════════════════════════════════ -->
+  <section id="story" class="slide slide--dark">
+    <div class="label">The Story</div>
+
+    <div class="story-grid">
+      <div>
+        <p class="pull-quote">
+          "At 28, life changed.<br><em>Everything</em> was taken from me."
+        </p>
+        <div class="story-divider"></div>
+      </div>
+
+      <div class="story-body">
+        <p>Dennis Eddy received his first camera from his father at 16 — and never looked at the world the same way again. He fell immediately in love with capturing moments, chasing the feeling behind each frame.</p>
+        <p>Years passed. Life moved. The cameras went quiet.</p>
+        <p>At 28, Dennis was struck by a train. In that moment, every sense — sight, hearing, smell, taste, touch, and proprioception — was taken from him. After fourteen months in inpatient recovery, something became unmistakably clear: his purpose pointed to photography and videography.</p>
+        <p class="hero-line">"I love what I do because I am following my purpose in life."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 3. BRAND ESSENCE                          -->
+  <!-- ══════════════════════════════════════════ -->
+  <section id="essence" class="slide slide--mid">
+    <div class="label">Brand Essence</div>
+    <h2 class="section-title">Three pillars that define<br>every creative decision.</h2>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div class="pillar-name">Resilient</div>
+        <p class="pillar-desc">Built through survival, not just ambition. The brand carries weight that competitors cannot manufacture — a story that earns trust before a word is spoken.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div class="pillar-name">Intentional</div>
+        <p class="pillar-desc">Every frame chosen with purpose. Dennis doesn't point and shoot — he sees, considers, and captures. That deliberate precision shows in every touchpoint of the brand.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div class="pillar-name">Versatile</div>
+        <p class="pillar-desc">From wildlife to real estate, events to portraits — eight disciplines, one unified vision. Serving the Charlottesville-to-DC corridor and beyond.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 4. COLOR SYSTEM                            -->
+  <!-- ══════════════════════════════════════════ -->
+  <section id="colors" class="slide slide--dark">
+    <div class="label">Color System</div>
+    <h2 class="section-title">Direction A — Cinematic</h2>
+
+    <div class="color-row">
+      <div class="swatch" style="background:#0D0D0D; border:1px solid #1e1e1e;">
+        <div class="swatch-name" style="color:#F5F3EE;">Near Black</div>
+        <div class="swatch-hex" style="color:#7A7672;">#0D0D0D</div>
+        <div class="swatch-use"  style="color:#7A7672;">Primary background. All main surfaces, hero sections, page base.</div>
+      </div>
+
+      <div class="swatch" style="background:#F5F3EE;">
+        <div class="swatch-name" style="color:#1A1A1A;">Warm Cream</div>
+        <div class="swatch-hex" style="color:#7A7672;">#F5F3EE</div>
+        <div class="swatch-use"  style="color:#7A7672;">Primary text on dark. Headlines, body copy, logo on light.</div>
+      </div>
+
+      <div class="swatch" style="background:#C9A96E;">
+        <div class="swatch-name" style="color:#1A1A1A;">Highlight Gold</div>
+        <div class="swatch-hex" style="color:rgba(0,0,0,0.4);">#C9A96E</div>
+        <div class="swatch-use"  style="color:rgba(0,0,0,0.38);">Accent. CTAs, dividers, active states, logo mark.</div>
+      </div>
+
+      <div class="swatch" style="background:#3A3835;">
+        <div class="swatch-name" style="color:#F5F3EE;">Warm Charcoal</div>
+        <div class="swatch-hex" style="color:#7A7672;">#3A3835</div>
+        <div class="swatch-use"  style="color:#7A7672;">Cards, secondary surfaces, borders, input fields.</div>
+      </div>
+
+      <div class="swatch" style="background:#7A7672;">
+        <div class="swatch-name" style="color:#F5F3EE;">Stone Gray</div>
+        <div class="swatch-hex" style="color:rgba(245,243,238,0.55);">#7A7672</div>
+        <div class="swatch-use"  style="color:rgba(245,243,238,0.42);">Secondary text. Captions, metadata, placeholders.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 5. TYPOGRAPHY                              -->
+  <!-- ══════════════════════════════════════════ -->
+  <section id="type" class="slide slide--dark">
+    <div class="label">Typography</div>
+
+    <div class="type-grid">
+      <!-- Serif -->
+      <div class="type-block">
+        <div class="type-label">Instrument Serif — Headings &amp; Wordmark</div>
+        <div class="type-hero serif" style="color:var(--cream); font-weight:300;">Aa</div>
+        <div class="type-scale">
+          <div class="scale-row">
+            <span class="scale-meta">72px</span>
+            <span class="serif" style="font-size:42px; font-weight:300; color:var(--cream); line-height:1;">Display</span>
+          </div>
+          <div class="scale-row">
+            <span class="scale-meta">48px</span>
+            <span class="serif" style="font-size:30px; font-weight:300; color:var(--cream);">Heading One</span>
+          </div>
+          <div class="scale-row">
+            <span class="scale-meta">32px</span>
+            <span class="serif" style="font-size:22px; font-weight:400; color:var(--stone);">Heading Two</span>
+          </div>
+          <div class="scale-row">
+            <span class="scale-meta">italic</span>
+            <span class="serif" style="font-size:19px; font-style:italic; font-weight:300; color:var(--stone);">Pull quotes &amp; emphasis</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sans -->
+      <div class="type-block">
+        <div class="type-label">Inter — Body &amp; UI</div>
+        <div class="type-hero" style="color:var(--cream); font-weight:300; font-family:var(--sans);">Aa</div>
+        <div class="type-scale">
+          <div class="scale-row">
+            <span class="scale-meta">600</span>
+            <span style="font-size:16px; font-weight:600; color:var(--cream);">Navigation &amp; Labels</span>
+          </div>
+          <div class="scale-row">
+            <span class="scale-meta">400</span>
+            <span style="font-size:15px; font-weight:400; color:var(--stone);">Body — clean, readable, neutral</span>
+          </div>
+          <div class="scale-row">
+            <span class="scale-meta">caps</span>
+            <span style="font-size:9px; font-weight:600; letter-spacing:5px; text-transform:uppercase; color:var(--gold);">Section Labels &amp; Tags</span>
+          </div>
+          <div class="scale-row">
+            <span class="scale-meta">300</span>
+            <span style="font-size:12px; font-weight:300; color:var(--stone);">Captions, metadata, fine print</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 6. LOGO SYSTEM                             -->
+  <!-- ══════════════════════════════════════════ -->
+  <section id="logo" class="slide slide--mid">
+    <div class="label">Logo System</div>
+    <h2 class="section-title">Mark &amp; Wordmark</h2>
+
+    <div class="logo-grid">
+
+      <!-- Primary on dark -->
+      <div class="logo-card logo-card--on-black">
+        <svg viewBox="0 0 480 110" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:400px;">
+          <text x="240" y="60" text-anchor="middle"
+            font-family="Instrument Serif, Georgia, serif"
+            font-size="36" font-weight="300" fill="#F5F3EE" letter-spacing="10">DIGITAL JENIUS</text>
+          <line x1="20" y1="78" x2="460" y2="78" stroke="#C9A96E" stroke-width="0.8"/>
+          <text x="240" y="98" text-anchor="middle"
+            font-family="Inter, sans-serif"
+            font-size="9" font-weight="400" fill="#7A7672" letter-spacing="5">PHOTOGRAPHY · VIDEOGRAPHY</text>
+        </svg>
+        <div class="logo-caption">Primary — Dark Background</div>
+      </div>
+
+      <!-- Monogram -->
+      <div class="logo-card logo-card--on-mid">
+        <svg viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg" style="width:130px; height:130px;">
+          <circle cx="65" cy="65" r="58" fill="none" stroke="#C9A96E" stroke-width="1.2"/>
+          <circle cx="65" cy="65" r="51" fill="none" stroke="#C9A96E" stroke-width="0.3" opacity="0.35"/>
+          <text x="65" y="84" text-anchor="middle"
+            font-family="Instrument Serif, Georgia, serif"
+            font-size="46" font-weight="300" fill="#F5F3EE" letter-spacing="3">DJ</text>
+        </svg>
+        <div class="logo-caption">Monogram Mark</div>
+      </div>
+
+      <!-- Reversed on cream -->
+      <div class="logo-card logo-card--on-cream">
+        <svg viewBox="0 0 480 110" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:400px;">
+          <text x="240" y="60" text-anchor="middle"
+            font-family="Instrument Serif, Georgia, serif"
+            font-size="36" font-weight="300" fill="#0D0D0D" letter-spacing="10">DIGITAL JENIUS</text>
+          <line x1="20" y1="78" x2="460" y2="78" stroke="#8B6019" stroke-width="0.8"/>
+          <text x="240" y="98" text-anchor="middle"
+            font-family="Inter, sans-serif"
+            font-size="9" font-weight="400" fill="#7A7672" letter-spacing="5">PHOTOGRAPHY · VIDEOGRAPHY</text>
+        </svg>
+        <div class="logo-caption" style="color:#aaa;">Reversed — Light Background</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 7. BRAND VOICE                             -->
+  <!-- ══════════════════════════════════════════ -->
+  <section id="voice" class="slide slide--dark">
+    <div class="label">Brand Voice</div>
+
+    <div class="voice-grid">
+
+      <div>
+        <div class="tone-pills">
+          <span class="pill">Purposeful</span>
+          <span class="pill">Confident</span>
+          <span class="pill">Warm</span>
+          <span class="pill">Unfiltered</span>
+        </div>
+
+        <div class="do-dont">
+          <div class="do-col">
+            <div class="col-head">Write this</div>
+            <ul class="col-list">
+              <li>Direct, honest language</li>
+              <li>First person — "I shoot"</li>
+              <li>Emotion-led storytelling</li>
+              <li>Short, punchy sentences</li>
+              <li>Virginia-rooted specifics</li>
+            </ul>
+          </div>
+          <div class="dont-col">
+            <div class="col-head">Not this</div>
+            <ul class="col-list">
+              <li>Corporate filler words</li>
+              <li>Passive voice overuse</li>
+              <li>Generic photo clichés</li>
+              <li>Overpromising</li>
+              <li>Industry jargon</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="about-box">
+          <div class="col-head" style="color:var(--gold); margin-bottom:20px;">About Us — Final Copy</div>
+          <p class="about-text">
+            Dennis Eddy received his first camera at 16 — and never looked at the world the same way again. After years away from the lens, a life-altering accident at 28 stripped him of every sense, all at once. What emerged from 14 months of recovery wasn't just survival — it was <span>purpose</span>. Today, Digital Jenius is the result of a man who fought to see again, and chose to spend that sight capturing the moments that matter most. Every shoot is intentional. Every frame, <span>earned</span>.
+          </p>
+        </div>
+
+        <div class="tagline-alts">
+          <div class="tag-alt-label">Tagline Options</div>
+          <div class="tag-alt primary serif">Every frame, on purpose.</div>
+          <div class="tag-alt secondary serif">See what matters. Capture what lasts.</div>
+          <div class="tag-alt secondary serif">Built to capture. Born to create.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 8. SERVICES                                -->
+  <!-- ══════════════════════════════════════════ -->
+  <section id="services" class="slide slide--mid">
+    <div class="label">Service Architecture</div>
+    <h2 class="section-title">Eight disciplines.<br>One vision.</h2>
+
+    <div class="svc-grid">
+      <div class="svc-card">
+        <span class="svc-icon">🎉</span>
+        <div class="svc-title">Event Photography</div>
+        <p class="svc-desc">Weddings, corporate events, celebrations — every milestone documented with care and precision.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">⚡</span>
+        <div class="svc-title">Sports Photography</div>
+        <p class="svc-desc">High-speed, high-stakes action. Athletes, teams, and game-day moments captured in motion.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">🐾</span>
+        <div class="svc-title">Animal &amp; Pet</div>
+        <p class="svc-desc">Portraits that capture personality — for families, breeders, shelters, and pet brands.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">🎭</span>
+        <div class="svc-title">Portrait Photography</div>
+        <p class="svc-desc">Individual, family, and professional portraits delivered with editorial quality.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">📦</span>
+        <div class="svc-title">Product Photography</div>
+        <p class="svc-desc">E-commerce, brand campaigns, and catalog — your product, perfected for the screen.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">🦅</span>
+        <div class="svc-title">Wildlife Photography</div>
+        <p class="svc-desc">Virginia's landscapes and wildlife, documented with patience, respect, and precision.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">🏠</span>
+        <div class="svc-title">Real Estate</div>
+        <p class="svc-desc">Listings that sell faster. Interior and exterior photography for agents and developers.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">🎬</span>
+        <div class="svc-title">Documentary</div>
+        <p class="svc-desc">Long-form visual storytelling — people, places, and journeys that deserve to be remembered.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 9. BRAND APPLICATIONS                      -->
+  <!-- ══════════════════════════════════════════ -->
+  <section id="apps" class="slide slide--dark">
+    <div class="label">Brand Applications</div>
+
+    <div class="apps-grid">
+
+      <div>
+        <div class="app-label">Business Card — Front</div>
+        <div class="biz-card">
+          <div>
+            <div class="bc-brand">DIGITAL JENIUS</div>
+            <div class="bc-rule"></div>
+            <div class="bc-name">Dennis James Eddy</div>
+          </div>
+          <div class="bc-info">
+            Photography &amp; Videography<br>
+            (434) 400-9422<br>
+            Charlottesville, Virginia<br>
+            By appointment — 7 days a week
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="app-label">Instagram Profile Preview</div>
+        <div class="social-mock">
+          <div class="social-top">
+            <div class="social-avatar">
+              <span class="avatar-text">DJ</span>
+            </div>
+            <div>
+              <div class="social-handle">@digitaljenius</div>
+              <div class="social-bio">
+                📍 Charlottesville → Northern VA · DC<br>
+                Photography &amp; Documentary Film<br>
+                <span style="color:var(--gold); font-size:10px; letter-spacing:1px;">Every frame, on purpose. ✦</span>
+              </div>
+            </div>
+          </div>
+          <div class="social-tiles">
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 10. NEXT STEPS                             -->
+  <!-- ══════════════════════════════════════════ -->
+  <section id="next" class="slide slide--dark">
+    <div class="label">Next Steps</div>
+    <h2 class="section-title">From brand to build.</h2>
+
+    <div class="next-cols">
+      <ul class="step-list">
+        <li class="step-item">
+          <span class="step-num">01</span>
+          <div class="step-body">
+            <strong>Confirm Brand Direction</strong>
+            <p>Approve Direction A (Cinematic) or request adjustments to colors, fonts, or tagline before any development begins.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">02</span>
+          <div class="step-body">
+            <strong>Logo Finalization</strong>
+            <p>Polish the wordmark and monogram into production-ready SVG files — dark, light, and monochrome versions.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">03</span>
+          <div class="step-body">
+            <strong>Photography Assets</strong>
+            <p>Gather portfolio images organized by service category to populate the website gallery sections.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">04</span>
+          <div class="step-body">
+            <strong>Confirm Shipping Address</strong>
+            <p>Needed for business registration and any physical mail or print materials.</p>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="step-list">
+        <li class="step-item">
+          <span class="step-num">05</span>
+          <div class="step-body">
+            <strong>Build the Website</strong>
+            <p>Next.js site built on this design system — homepage, services, about, gallery, and contact with booking form.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">06</span>
+          <div class="step-body">
+            <strong>Social Media Setup</strong>
+            <p>Instagram, Facebook, and TikTok profiles with consistent branding, bio copy, and first-post content plan.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">07</span>
+          <div class="step-body">
+            <strong>Google Business Profile</strong>
+            <p>Set up and optimize GMB listing for Charlottesville — service areas, categories, photos, and reviews strategy.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <span class="step-num">08</span>
+          <div class="step-body">
+            <strong>Booking System</strong>
+            <p>Online inquiry and session request form so clients can reach Dennis directly from any page.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <script>
+    const sections = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.sidenav a');
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          dots.forEach(d => d.classList.remove('active'));
+          const dot = document.querySelector(`.sidenav a[href="#${e.target.id}"]`);
+          if (dot) dot.classList.add('active');
+        }
+      });
+    }, { threshold: 0.45 });
+
+    sections.forEach(s => io.observe(s));
+  </script>
+
+</body>
+</html>
